@@ -57,7 +57,7 @@ static long setup_ld_preload(void ***envp_user_ptr)
     static const char kLdLibraryPath[] = "LD_LIBRARY_PATH=/data/adb/sevenk/lib";
     static const size_t kReadEnvBatch = 16;
     static const size_t kPtrSize = sizeof(unsigned long);
-    unsigned long stackp = current_user_stack_pointer();
+    unsigned long stackp = user_stack_pointer(task_pt_regs(current));
     unsigned long envp, ld_preload_p, ld_library_path_p;
     unsigned long *envp_p = (unsigned long *)envp_user_ptr;
     unsigned long *tmp_env_p = NULL, *tmp_env_p2 = NULL;
